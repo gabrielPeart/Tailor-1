@@ -143,4 +143,18 @@ class TestMappable: XCTestCase {
     XCTAssert(testStruct.relatives.count == 2)
   }
 
+  func testKVOMapping() {
+    let dictionary = ["firstName" : "Taylor",
+    "lastName" : "Swift",
+    "job" : ["name" : "Musician"],
+    "sex": "female",
+    "birth_date": "2014-07-15"]
+    var testStruct = TestPersonStruct([:])
+
+    testStruct.map(dictionary)
+//    testStruct.set(key: "firstName", toValue: "John")
+
+    XCTAssertEqual(testStruct.property("firstName"), "John")
+  }
+
 }
